@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('task', {
+    return queryInterface.createTable('Tasks', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -11,25 +11,29 @@ module.exports = {
         allowNull: false,
         validate: {
           notEmpty: true,
-          not: {
-            arg: /\s\s+/g,
-            msg: 'whitespace string'
-          }
+          notNull: true,
         }
       },
       is_сompleted: {
         type: Sequelize.BOOLEAN,
         defaultValue: false
       },
+
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,
-        defaultValue: Sequelize.NOW
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+      },
+
+      updated_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
     });
   },
  
   down: (queryInterface) => {
-    return queryInterface.dropTable('task');
+    return queryInterface.dropTable('Tasks');
   }
 };

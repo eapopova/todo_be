@@ -1,6 +1,8 @@
 const path = require('path');
+const {ConfigModule} = require('@nestjs/config')
+ConfigModule.forRoot({isGlobal:true});
 
 module.exports = {
-  "config": path.resolve('db', 'config.js'),
-  "migrations-path": path.resolve('./migrations')
+  config: path.resolve('db', 'config.js'),
+  'migrations-path': path.resolve('db', 'migrations'),
 };

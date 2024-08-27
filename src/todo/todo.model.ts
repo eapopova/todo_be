@@ -4,7 +4,7 @@ import { Column, Table } from 'sequelize-typescript';
 @Table({
   underscored: true,
   timestamps: true,
-  tableName: 'tasks',
+  tableName: 'Tasks',
 })
 export class Todo extends Model{
     @Column({ allowNull: false })
