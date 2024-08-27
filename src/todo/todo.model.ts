@@ -4,12 +4,12 @@ import { Column, Table } from 'sequelize-typescript';
 @Table({
   underscored: true,
   timestamps: true,
-  tableName: 'Tasks',
+  tableName: 'tasks',
 })
 export class Todo extends Model{
     @Column({ allowNull: false })
-      text:string;
+      text: string;
 
     @Column({ defaultValue: false })
-      isComplted:boolean;
+      isComplted: boolean;
 }
