@@ -3,7 +3,8 @@ import { IsBoolean, IsNotEmpty, IsOptional, IsString, MaxLength } from 'class-va
 
 export class UpdateTaskDTO {
 
-  @Transform(({ value }) => typeof (value) ? value.trim() : null)
+  @Transform(({ value }) => (typeof value === 'string') ? value.replace(/\s\s+/g, ' ') : value)
+  @Transform(({ value }) => (typeof value === 'string') ? value.trim() : value)
   @MaxLength(255)
   @IsString()  
   @IsNotEmpty()
