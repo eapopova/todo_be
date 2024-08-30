@@ -22,7 +22,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     'indent': ['error', 2],
       'max-len': ['error', { 
-        'code': 80, 
+        'code': 100, 
         'tabWidth': 2, 
         'ignoreUrls': true,
         'ignoreStrings': true,
