@@ -1,17 +1,6 @@
-interface NormalMessanges {
-    [key: string]: string
-}
+import { ResponseMessagesInterface } from './types/ResponseMessagesInterface'
 
-interface ErrorMessanges {
-    [key: string]: string
-}
-
-interface ResponseMessages {
-    normal: NormalMessanges,
-    error: ErrorMessanges
-}
-
-export const ResponseMessages: ResponseMessages = {
+export const ResponseMessages: ResponseMessagesInterface = {
   normal: {
     DATABASE_IS_EMPTY: 'Empty database',
     DELETE_COMPLETED_TASKS: 'Completed tasks have been deleted',

@@ -1,6 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { Task } from './task.model';
 import { InjectModel } from '@nestjs/sequelize';
+
+import { Task } from './task.model';
 import { CreateTaskDTO } from './dto/createTaskDTO';
 import { ResponseMessages } from 'src/responseMessages';
 import { UpdateIsCompletedTasksDTO } from './dto/updateIsCompletedTasksDTO';
@@ -12,8 +13,7 @@ export class TasksService {
   constructor(@InjectModel(Task) private readonly taskRepository: typeof Task){}
 
   async findAllTasks(): Promise<Task[]>{
-    return await this.taskRepository.findAll()
-  }
+    return await this.taskRepository.findAll({ order: [['id', 'ASC']]})}
 
   async createTask(dto: Partial<CreateTaskDTO>): Promise<BadRequestException | Task> {
     const newTask = await this.taskRepository.create(dto)
@@ -26,7 +26,7 @@ export class TasksService {
   }
 
   async deleteCompletedTasks(): Promise<BadRequestException | string> {
-    const deletedTasks: number = await this.taskRepository.destroy({
+    const deletedTasks = await this.taskRepository.destroy({
       where: { isCompleted: true }
     })
     
@@ -52,16 +52,15 @@ export class TasksService {
   }
 
   async updateById(id: number, dto: UpdateTaskDTO): Promise<BadRequestException | Task> {
-    const countUpdatedTasks = await this.taskRepository.update(dto, {
-      where: { id }
+    const [countUpdatedTasks, arrayUpdatedTasks] = await this.taskRepository.update(dto, {
+      where: { id },
+      returning: true
     })
 
-    if (countUpdatedTasks[0] === 0) {
+    if (countUpdatedTasks === 0) {
       throw new BadRequestException(ResponseMessages.error.NOT_UPDATE_TASK_BY_ID)
     }
-
-    const updatedTask: Task = await this.taskRepository.findByPk(id)
-    return updatedTask
+    return arrayUpdatedTasks[0]
   }
 
   async updateIsCompletedAllTasks(

@@ -5,7 +5,6 @@ import { Column, Table, Model } from 'sequelize-typescript';
   timestamps: true,
   tableName: 'tasks',
 })
-
 export class Task extends Model{
     @Column({ allowNull: false })
       text: string;
