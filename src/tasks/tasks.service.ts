@@ -2,10 +2,10 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 
 import { Task } from './task.model';
-import { CreateTaskDTO } from './dto/createTaskDTO';
-import { ResponseMessages } from 'src/responseMessages';
-import { UpdateIsCompletedTasksDTO } from './dto/updateIsCompletedTasksDTO';
-import { UpdateTaskDTO } from './dto/updateTaskDTO';
+import { CreateTaskDTO } from './dto/create-task.dto';
+import { responseMessages } from 'src/response-messages';
+import { UpdateIsCompletedTasksDTO } from './dto/update-is-completed-tasks.dto';
+import { UpdateTaskDTO } from './dto/update-task.dto';
 
 @Injectable()
 export class TasksService {
@@ -19,7 +19,7 @@ export class TasksService {
     const newTask = await this.taskRepository.create(dto)
     if (!newTask) {
       throw new BadRequestException(
-        ResponseMessages.error.TASK_NOT_CREATE
+        responseMessages.error.TASK_NOT_CREATE
       )
     }
     return newTask
@@ -32,11 +32,11 @@ export class TasksService {
     
     if(deletedTasks === 0) {
       throw new BadRequestException(
-        ResponseMessages.error.NOT_EXIST_COMPLETED_TASKS
+        responseMessages.error.NOT_EXIST_COMPLETED_TASKS
       )
     }
 
-    return ResponseMessages.normal.DELETE_COMPLETED_TASKS
+    return responseMessages.normal.DELETE_COMPLETED_TASKS
   }
 
   async deleteById(id: number): Promise<BadRequestException | string> {
@@ -45,10 +45,10 @@ export class TasksService {
     })
 
     if(deletedTask === 0) {
-      throw new BadRequestException(ResponseMessages.error.NOT_EXIST_TASK)
+      throw new BadRequestException(responseMessages.error.NOT_EXIST_TASK)
     }
 
-    return ResponseMessages.normal.DELETE_TASK_BY_ID
+    return responseMessages.normal.DELETE_TASK_BY_ID
   }
 
   async updateById(id: number, dto: UpdateTaskDTO): Promise<BadRequestException | Task> {
@@ -58,7 +58,7 @@ export class TasksService {
     })
 
     if (countUpdatedTasks === 0) {
-      throw new BadRequestException(ResponseMessages.error.NOT_UPDATE_TASK_BY_ID)
+      throw new BadRequestException(responseMessages.error.NOT_UPDATE_TASK_BY_ID)
     }
     return arrayUpdatedTasks[0]
   }
@@ -71,9 +71,9 @@ export class TasksService {
     })
 
     if (countUpdateTasks[0] === 0 ) {
-      throw new BadRequestException(ResponseMessages.error.NOT_UPDATE_IS_COMPLETED_ALL_TASKS)
+      throw new BadRequestException(responseMessages.error.NOT_UPDATE_IS_COMPLETED_ALL_TASKS)
     }
 
-    return ResponseMessages.normal.UPDATE_IS_COMPLETED_ALL_TASKS
+    return responseMessages.normal.UPDATE_IS_COMPLETED_ALL_TASKS
   }
 }

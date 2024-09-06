@@ -1,10 +1,10 @@
 import { BadRequestException, Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
 
 import { TasksService } from './tasks.service';
-import { CreateTaskDTO } from './dto/createTaskDTO';
+import { CreateTaskDTO } from './dto/create-task.dto';
 import { Task } from './task.model';
-import { UpdateIsCompletedTasksDTO } from './dto/updateIsCompletedTasksDTO';
-import { UpdateTaskDTO } from './dto/updateTaskDTO';
+import { UpdateIsCompletedTasksDTO } from './dto/update-is-completed-tasks.dto';
+import { UpdateTaskDTO } from './dto/update-task.dto';
 
 @Controller('tasks')
 export class TasksController {

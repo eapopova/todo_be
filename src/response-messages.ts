@@ -1,6 +1,6 @@
-import { ResponseMessagesInterface } from './types/ResponseMessagesInterface'
+import { ResponseMessagesInterface } from './types/response-messages-interface'
 
-export const ResponseMessages: ResponseMessagesInterface = {
+export const responseMessages: ResponseMessagesInterface = {
   normal: {
     DATABASE_IS_EMPTY: 'Empty database',
     DELETE_COMPLETED_TASKS: 'Completed tasks have been deleted',

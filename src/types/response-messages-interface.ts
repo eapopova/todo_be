@@ -1,4 +1,4 @@
-import { GlossaryInterface } from '../types/GlossaryInterface'
+import { GlossaryInterface } from '../types/glossary-interface'
 
 export interface ResponseMessagesInterface {
     normal: GlossaryInterface,
