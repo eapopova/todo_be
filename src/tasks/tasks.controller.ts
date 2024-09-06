@@ -15,7 +15,7 @@ export class TasksController {
     return await this.tasksService.findAllTasks()
   } 
 
-  @Post('create-task')
+  @Post('')
   async createTasks(@Body() dto: CreateTaskDTO): Promise<BadRequestException | Task> {
     return await this.tasksService.createTask(dto)
   }
@@ -30,7 +30,7 @@ export class TasksController {
     return await this.tasksService.deleteById(id)
   }
   
-  @Patch('update-all')
+  @Patch('')
   async updateIsCompletedAllTasks(
       @Body() dto: UpdateIsCompletedTasksDTO
   ): Promise<BadRequestException | string> {
