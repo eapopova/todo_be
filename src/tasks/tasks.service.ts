@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/sequelize';
 
 import { Task } from './task.model';
 import { CreateTaskDTO } from './dto/create-task.dto';
-import { responseMessages } from 'src/response-messages';
+import { responseMessages } from '../response-messages';
 import { UpdateIsCompletedTasksDTO } from './dto/update-is-completed-tasks.dto';
 import { UpdateTaskDTO } from './dto/update-task.dto';
 

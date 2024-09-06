@@ -14,19 +14,16 @@ module.exports = {
           notNull: true,
         }
       },
-
       is_completed: {
         allowNull: false,
         type: Sequelize.BOOLEAN,
         defaultValue: false
       },
-
       created_at: {
         allowNull: false,
         defaultValue: Sequelize.NOW,
         type: Sequelize.DATE,
       },
-
       updated_at: {
         allowNull: false,
         defaultValue: Sequelize.NOW,

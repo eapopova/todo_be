@@ -1,4 +1,13 @@
-import { BadRequestException, Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
+import { 
+  BadRequestException, 
+  Body, 
+  Controller, 
+  Delete, 
+  Get, 
+  Param, 
+  ParseIntPipe, 
+  Patch, 
+  Post } from '@nestjs/common';
 
 import { TasksService } from './tasks.service';
 import { CreateTaskDTO } from './dto/create-task.dto';
@@ -15,7 +24,7 @@ export class TasksController {
     return await this.tasksService.findAllTasks()
   } 
 
-  @Post('')
+  @Post()
   async createTasks(@Body() dto: CreateTaskDTO): Promise<BadRequestException | Task> {
     return await this.tasksService.createTask(dto)
   }
@@ -30,7 +39,7 @@ export class TasksController {
     return await this.tasksService.deleteById(id)
   }
   
-  @Patch('')
+  @Patch()
   async updateIsCompletedAllTasks(
       @Body() dto: UpdateIsCompletedTasksDTO
   ): Promise<BadRequestException | string> {
