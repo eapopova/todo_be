@@ -9,7 +9,7 @@ async function bootstrap() {
   const configService = app.get(ConfigService)
 
   app.enableCors ({
-    origin: true
+    origin: 'http://127.0.0.1:5500'
   })
   app.useGlobalPipes(new ValidationPipe({ transform: true }))
 
