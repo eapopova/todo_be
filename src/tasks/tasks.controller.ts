@@ -7,7 +7,8 @@ import {
   Param, 
   ParseIntPipe, 
   Patch, 
-  Post } from '@nestjs/common';
+  Post 
+} from '@nestjs/common';
 
 import { TasksService } from './tasks.service';
 import { CreateTaskDTO } from './dto/create-task.dto';

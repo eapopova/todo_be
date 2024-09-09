@@ -1,9 +1,10 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 
+import { responseMessages } from '../response-messages';
+
 import { Task } from './task.model';
 import { CreateTaskDTO } from './dto/create-task.dto';
-import { responseMessages } from '../response-messages';
 import { UpdateIsCompletedTasksDTO } from './dto/update-is-completed-tasks.dto';
 import { UpdateTaskDTO } from './dto/update-task.dto';
 

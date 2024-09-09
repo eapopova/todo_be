@@ -4,7 +4,8 @@ import {
   IsNotEmpty, 
   IsOptional, 
   IsString, 
-  MaxLength } from 'class-validator';
+  MaxLength 
+} from 'class-validator';
 
 export class UpdateTaskDTO {
   @Transform(
