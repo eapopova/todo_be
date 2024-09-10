@@ -36,8 +36,8 @@ export class TasksController {
   }
 
   @Delete(':id')
-  async deleteById(@Param('id', ParseIntPipe) id: number): Promise<BadRequestException | string>{
-    return await this.tasksService.deleteById(id)
+  deleteById(@Param('id', ParseIntPipe) id: number): Promise<BadRequestException | string>{
+    return this.tasksService.deleteById(id)
   }
   
   @Patch()
