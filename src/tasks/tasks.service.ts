@@ -10,7 +10,6 @@ import { UpdateTaskDTO } from './dto/update-task.dto';
 
 @Injectable()
 export class TasksService {
-
   constructor(@InjectModel(Task) private readonly taskRepository: typeof Task){}
 
   async findAllTasks(): Promise<Task[]>{
@@ -79,7 +78,7 @@ export class TasksService {
       isCompleted: dto.isCompleted,
       attributes: ['id', 'text', 'isCompleted', 'createdAt', 'updatedAt']
     }, {
-      where: { isCompleted: !dto.isCompleted, fields: ['isComplited']}
+      where: { isCompleted: !dto.isCompleted}, fields: ['isCompleted'],
     })
 
     if (countUpdateTasks[0] === 0 ) {
