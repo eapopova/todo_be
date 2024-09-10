@@ -61,7 +61,7 @@ export class TasksService {
       attributes: ['id', 'text', 'isCompleted', 'createdAt', 'updatedAt']
     }, {
       where: { id },
-      fields: ['text', 'isComplited'],
+      fields: ['text', 'isCompleted'],
       returning: true
     })
 
@@ -78,7 +78,7 @@ export class TasksService {
       isCompleted: dto.isCompleted,
       attributes: ['id', 'text', 'isCompleted', 'createdAt', 'updatedAt']
     }, {
-      where: { isCompleted: !dto.isCompleted}, fields: ['isCompleted'],
+      where: { isCompleted: !dto.isCompleted}, fields: ['isCompleted']
     })
 
     if (countUpdateTasks[0] === 0 ) {
