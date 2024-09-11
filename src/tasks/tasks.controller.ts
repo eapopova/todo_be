@@ -21,18 +21,18 @@ export class TasksController {
   constructor(private readonly tasksService: TasksService){}
 
   @Get()
-  async findAllTasks(): Promise<Task[]>{
-    return await this.tasksService.findAllTasks()
+  findAllTasks(): Promise<Task[]>{
+    return this.tasksService.findAllTasks()
   } 
 
   @Post()
-  async createTasks(@Body() dto: CreateTaskDTO): Promise<BadRequestException | Task> {
-    return await this.tasksService.createTask(dto)
+  createTasks(@Body() dto: CreateTaskDTO): Promise<BadRequestException | Task> {
+    return this.tasksService.createTask(dto)
   }
   
   @Delete('delete-completed')
-  async deleteCompletedTasks(): Promise<BadRequestException | string> {
-    return await this.tasksService.deleteCompletedTasks()
+  deleteCompletedTasks(): Promise<BadRequestException | string> {
+    return this.tasksService.deleteCompletedTasks()
   }
 
   @Delete(':id')
@@ -41,17 +41,17 @@ export class TasksController {
   }
   
   @Patch()
-  async updateIsCompletedAllTasks(
+  updateIsCompletedAllTasks(
       @Body() dto: UpdateIsCompletedTasksDTO
   ): Promise<BadRequestException | string> {
-    return await this.tasksService.updateIsCompletedAllTasks(dto)
+    return this.tasksService.updateIsCompletedAllTasks(dto)
   }
 
   @Patch(':id')
-  async updateById(
+  updateById(
     @Param('id', ParseIntPipe) id: number, 
     @Body() dto: UpdateTaskDTO
   ):  Promise<BadRequestException | Task> {
-    return await this.tasksService.updateById(id, dto)
+    return this.tasksService.updateById(id, dto)
   }
 }

@@ -57,8 +57,7 @@ export class TasksService {
   async updateById(id: number, dto: UpdateTaskDTO): Promise<BadRequestException | Task> {
     const [countUpdatedTasks, arrayUpdatedTasks] = await this.taskRepository.update({
       text: dto.text, 
-      isCompleted: dto.isCompleted, 
-      attributes: ['id', 'text', 'isCompleted', 'createdAt', 'updatedAt']
+      isCompleted: dto.isCompleted
     }, {
       where: { id },
       fields: ['text', 'isCompleted'],
@@ -75,8 +74,7 @@ export class TasksService {
     dto: UpdateIsCompletedTasksDTO
   ): Promise<BadRequestException | string> {
     const countUpdateTasks = await this.taskRepository.update({
-      isCompleted: dto.isCompleted,
-      attributes: ['id', 'text', 'isCompleted', 'createdAt', 'updatedAt']
+      isCompleted: dto.isCompleted
     }, {
       where: { isCompleted: !dto.isCompleted}, fields: ['isCompleted']
     })
