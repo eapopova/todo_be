@@ -8,7 +8,6 @@ module.exports = {
   plugins: ['@typescript-eslint/eslint-plugin'],
   extends: [
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
   ],
   root: true,
   env: {
@@ -23,7 +22,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     'indent': ['error', 2],
       'max-len': ['error', { 
-        'code': 80, 
+        'code': 100, 
         'tabWidth': 2, 
         'ignoreUrls': true,
         'ignoreStrings': true,
